@@ -1,0 +1,6 @@
+ADD type=smartphone; manufacturer=Samsung; year=2022; os=Android 13; memory=256
+ADD type=laptop; manufacturer=Apple; year=2021; cpu=M1; ram=16
+ADD type=tablet; manufacturer=Apple; year=2012; screen=15.5; battery=1000
+PRINT
+REM manufacturer = Samsung
+PRINT
