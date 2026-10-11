@@ -1,0 +1,74 @@
+(.venv) PS C:\Users\zemlo\PycharmProjects\opppo_11> python -m ruff check .
+I001 [*] Import block is un-sorted or un-formatted
+ --> opppo_1.py:1:1
+  |
+1 | / from __future__ import annotations
+2 | | from abc import ABC, abstractmethod
+3 | | from dataclasses import dataclass
+4 | | from typing import Callable, Iterable
+5 | | import sys
+  | |__________^
+help: Organize imports
+  |
+1 | from __future__ import annotations
+2 +
+3 + import sys
+4 | from abc import ABC, abstractmethod
+5 | from dataclasses import dataclass
+6 | from typing import Callable, Iterable
+  - import sys
+7 |
+  |
+
+UP035 [*] Import from `collections.abc` instead: `Callable`, `Iterable`
+ --> opppo_1.py:4:1
+  |
+2 | from abc import ABC, abstractmethod
+3 | from dataclasses import dataclass
+4 | from typing import Callable, Iterable
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+5 | import sys
+  |
+help: Import from `collections.abc`
+  |
+3 | from dataclasses import dataclass
+  - from typing import Callable, Iterable
+4 + from collections.abc import Callable, Iterable
+5 | import sys
+  |
+
+PYI045 `__iter__` methods should return an `Iterator`, not an `Iterable`
+   --> opppo_1.py:149:27
+    |
+147 |         return len(self._devices)
+148 |
+149 |     def __iter__(self) -> Iterable[ElectronicDevice]:
+    |                           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+150 |         return iter(self._devices)
+    |
+
+RUF012 Mutable default value for class attribute
+   --> opppo_1.py:160:12
+    |
+158 |       value: str
+159 |
+160 |       _OPS = {
+    |  ____________^
+161 | |         "=":  lambda a, b: a == b,
+162 | |         "!=": lambda a, b: a != b,
+163 | |         "<":  lambda a, b: a < b,
+164 | |         ">":  lambda a, b: a > b,
+165 | |         "<=": lambda a, b: a <= b,
+166 | |         ">=": lambda a, b: a >= b,
+167 | |     }
+    | |_____^
+168 |
+169 |       def check(self, device: ElectronicDevice) -> bool:
+    |
+help: Consider initializing in `__init__` or annotating with `typing.ClassVar`
+
+Found 4 errors.
+[*] 2 fixable with `--fix`.
+(.venv) PS C:\Users\zemlo\PycharmProjects\opppo_11> python -m mypy opppo_1.py
+opppo_1.py:128: note: By default the bodies of untyped functions are not checked, consider using --check-untyped-defs  [annotation-unchecked]
+Success: no issues found in 1 source file
