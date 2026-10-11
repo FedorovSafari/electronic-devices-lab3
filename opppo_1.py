@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import sys
 from abc import ABC, abstractmethod
-from collections.abc import Callable, Iterable
+from collections.abc import Callable, Iterator
 from dataclasses import dataclass
 
 
@@ -147,7 +147,7 @@ class DeviceContainer:
     def __len__(self) -> int:
         return len(self._devices)
 
-    def __iter__(self) -> Iterable[ElectronicDevice]:
+    def __iter__(self) -> Iterator[ElectronicDevice]:
         return iter(self._devices)
 
 
