@@ -4,6 +4,7 @@ import sys
 from abc import ABC, abstractmethod
 from collections.abc import Callable, Iterator
 from dataclasses import dataclass
+from typing import Any, ClassVar
 
 
 #Базовый класс
@@ -158,11 +159,11 @@ class Condition:
     op: str
     value: str
 
-    _OPS = {
-        "=":  lambda a, b: a == b,
+    _OPS: ClassVar[dict[str, Callable[[Any, Any], bool]]] = {
+        "=": lambda a, b: a == b,
         "!=": lambda a, b: a != b,
-        "<":  lambda a, b: a < b,
-        ">":  lambda a, b: a > b,
+        "<": lambda a, b: a < b,
+        ">": lambda a, b: a > b,
         "<=": lambda a, b: a <= b,
         ">=": lambda a, b: a >= b,
     }
